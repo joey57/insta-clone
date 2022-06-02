@@ -1,0 +1,31 @@
+{% load django_bootstrap5 %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  {% block styles %}
+   {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  {% endblock %}
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-wrapper">
+        <img src=".../assests/logo.png" class="brand-img" alt="">
+        <input type="text" class="search-box" placeholder="search">
+        <div class="nav-items">
+            <img src="assests/home.png" class="icon" alt="">
+            <img src="assests/add.png" class="icon" alt="">
+            <img src="assests/explore.png" class="icon" alt="">
+            <img src="img/like.png" class="icon" alt="">
+            <div class="assests/account.png"></div>
+        </div>
+    </div>
+</nav>   
+</body>
+</html>
