@@ -56,18 +56,13 @@
           <img src="../../static/assests/heart.png" alt="" class="nav-icon" />
         </a>
       </li>
-   
-      <li class="nav-item dropdown mr-5">
-        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src=" " alt="" class="nav-user" />
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'profile' %} ">Profile</a>
-
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'logout' %} ">Logout</a>
-        </div>
+      <li class="nav-item active">
+        <a class="nav-link" href="{%url 'profile'%}">Profile <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'logout'%}">Logout</a>
+      </li>
+     
     </ul>
     {% else %}
     <li>
@@ -78,6 +73,6 @@
   
   </nav>
   <hr class="m-0" />
-  
+ 
 </body>
 </html>

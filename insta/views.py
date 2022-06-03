@@ -1,14 +1,58 @@
-import re
 from django.shortcuts import redirect, render
 from django.http  import HttpResponse, Http404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm,ImageUploadForm
 from django.contrib.auth.decorators import login_required
+from .models import Image, Profile, User
 
 # Create your views here.
+@login_required
+def home_page(request):
+    current_user = request.user
+    posts = Image.objects.all()
+   
+    user = User.objects.get(username=current_user.username)
+    users = User.objects.exclude(username=current_user.username).exclude(is_superuser=True)
+  
+    ctx = {
+        'posts':posts,
+        'user':user,
+        'users':users,     
+        }
+
+    return render(request,'index.html',ctx)
+
+@login_required
+def upload_picture(request):
+    current_user = request.user
+    user = Profile.objects.get(user=current_user)
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = user
+            post.save()
+            return redirect('/',username=request.user)
+    else:
+        form = ImageUploadForm()
+    return render(request,'upload_picture.html',{'form':form})
+
+@login_required
 def index(request):
-    return render(request, 'index.html') 
+    images = Image.objects.all()
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit = False)
+            image.user = request.user.profile
+            image.save()
+            messages.success(request, f'Successfully uploaded your pic!')
+            return redirect('index')
+    else:
+        form = ImageUploadForm()
+    return render(request, 'index.html', {"images":images[::-1], "form": form, "users": users, })
 
 def register(request):
     if request.method == 'POST':
@@ -42,3 +86,4 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'users/profile.html', context)
+
