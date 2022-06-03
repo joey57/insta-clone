@@ -16,6 +16,13 @@
 
 </head>
 <body>
+  {% if messsages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}">
+        {{message}}
+    </div>
+{% endfor %}
+{% endif %}
     {% block content %} 
 
     {% include 'navbar.html' %} 

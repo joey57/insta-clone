@@ -23,8 +23,12 @@
             <img src="assests/add.png" class="icon" alt="">
             <img src="assests/explore.png" class="icon" alt="">
             <img src="img/like.png" class="icon" alt="">
-            <div class="assests/account.png"></div>
-        </div>
+            <div class="assests/account.png">
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            </div>
+        </div>        
     </div>
 </nav>   
 </body>

@@ -21,7 +21,7 @@
       <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searching"
         name="search_profile" />
     </form>
-  
+   {% if user.is_authenticated %}
     <ul class="icons m-0">
       <li class="nav-item">
         <a class="nav-link mr-0" href=" ">
@@ -59,16 +59,17 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href=" ">Profile</a>
-
+          
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href=" ">Logout</a>
+          <a class="dropdown-item" href="{% url 'logout' %} ">Logout</a>
         </div>
       </li>
     </ul>
-    
+    {% else %}
     <li>
-      <a class="btn btn-default" href=" ">Sign in</a>
+      <a class="btn btn-default" href="{% url 'login' %} ">Sign in</a>
     </li>
+    {% endif %}
 
   
   </nav>
