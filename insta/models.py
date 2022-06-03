@@ -20,6 +20,22 @@ class Profile(models.Model):
       output_size = (300, 300)
       img.thumbnail(output_size)
       img.save(self.image.path)
+
+  def save_profile(self):
+    self.user
+
+  def delete_profile(self):
+    self.delete()
+
+  @classmethod
+  def filter_profile_by_id(cls, id):
+    profile = Profile.objects.filter(user_id = id).first()
+    return profile
+
+  @classmethod
+  def search_profile(cls, name):
+    return cls.objects.filter(user__username__icontains=name).all()
+
   
 
 
