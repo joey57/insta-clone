@@ -21,8 +21,8 @@
     <a href="/" class="navbar-brand mb-0 h1">
       <img src="../../static/assests/instagram_logo.png" alt="" />
     </a>
-    <form class="form-inline" id="searchform" action=" " role="search">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searching"
+    <form class="form" id="searchform" action="{% url 'search_results' %}" role="search">
+      <input type="text" class="form-control" placeholder="Search" aria-label="Search" id="searching"
         name="search_profile" />
     </form>
    {% if user.is_authenticated %}
