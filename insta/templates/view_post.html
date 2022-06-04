@@ -1,0 +1,77 @@
+{%extends 'base.html'%}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container">
+  <div class="single_post-container row">
+    <div class="col-md-6 image-container">
+      <img src="{{image.url}}" alt="" />
+    </div>
+    <div class="col-md-6 comments-container">
+      <div class="user">
+        <div class="image">
+          <img src="{{image.user.profile.image.url}}" alt="" />
+        </div>
+        <div class="user_name ml-1 mb-2">{{image.user.user.username}}</div>
+      </div>
+      <hr />
+      <div class="post">
+        <span class="user_name"> {{image.user.user.username}} </span>
+        {{image.name}}
+        <p class="post_caption">{{image.caption}}</p>
+      </div>
+      <div class="comments-wrapper">
+        <h4 class="text-center">Comments</h4>
+        {% for comment in comments %}
+        <div class="comment_wrapper">
+          <div class="comment_user user_name mr-2">
+            <div class="user">
+              <div class="image">
+                <img src="{{comment.user.profile.profile.image.url}}" alt="" />
+              </div>
+              <div class="user_name ml-1 mb-2">{{comment.user.username}}</div>
+            </div>
+          </div>
+          <div class="comment-comment mt-3">
+            <p>...{{comment.comment.capitalize}}</p>
+          </div>
+        </div>
+        <hr class="m-1 p-0" />
+        {%empty%}
+        <h5>No comments</h5>
+        {% endfor %}
+      </div>
+
+      <div class="icons-container mt-2">
+        <div class="like mr-3">
+          <a href="">
+            <img src="../../static/assests/liked.png" alt="" />
+          </a>
+        </div>
+        <div class="comment mr-3">
+          <a href="#">
+            <img src="../../static/assests/message.jpg" alt="" />
+          </a>
+        </div>
+        <div class="comment">
+          <a href="">
+            <img src="../../static/assests/send.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+      <h5>{{image.likes.count}} likes</h5>
+      <span class="text-muted">{{image.created}}</span>
+      <div class="comments-form mt-2">
+        <form action="{%url 'add_comment' post.id %}" method="POST">
+          {%csrf_token%}
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="comment" placeholder="Add comment" />
+            <button class="btn btn-success" type="submit">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}

@@ -14,11 +14,11 @@
       <div class="card m-3">
         <div class="card-header p-1">
           <div class="image" href=" ">
-            <img src="{{image.user.profile.image.url}}" alt="" />
+            <img class="rounded-circle border-bottom" src="{{image.user.profile.image.url}}" alt=" " width="35" height="35" />
           </div>
           <div class="user_name ml-1 mb-2" >{{image.user.user.username}}</div>
         </div>
-        {%if post.image%}
+        {%if image%}
         <a href=" ">
           <img src="{{image.image.url}}" class="card-img-top" alt="post" />
         </a>
@@ -55,7 +55,7 @@
           <span class="text-muted">{{image.created}}</span>
         </div>
         <div class="comments-form">
-          <form action=" " method="POST">
+          <form action="{% url 'add_comment'  image.id%} " method="POST">
             {%csrf_token%}
             <div class="input-group">
               <input type="text" class="form-control" name="comment" placeholder="Add comment" />
