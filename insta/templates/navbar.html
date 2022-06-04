@@ -13,6 +13,7 @@
   <title>Instagram</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
   {% endblock %}
 
 </head>
@@ -40,7 +41,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link mr-0" href=" {% url 'upload' %}">
+        <a class="nav-link mr-0" href="{% url 'upload' %}">
           <img src="../../static/assests/more.jpg" alt="" class="nav-icon" />
         </a>
       </li>

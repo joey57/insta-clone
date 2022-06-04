@@ -70,7 +70,7 @@ def view_post(request,pk):
 def add_comment(request,post_id):
     current_user = request.user
     if request.method == 'POST':
-        comment = request.POST.get('comments')
+        comment = request.POST.get('comment')
         post = Image.objects.get(id=post_id)
         user_profile = User.objects.get(username=current_user.username)
         Comments.objects.create(comment = comment, post = post, user = user_profile)

@@ -70,7 +70,7 @@ class Image(models.Model):
     return f'{self.user.name} Post'
 
 class Comments(models.Model):
-  comments = models.CharField(max_length=100)
+  comment = models.CharField(max_length=100)
   post=models.ForeignKey(Image,related_name='comments', on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
   created = models.DateTimeField(auto_now_add=True, null=True)
