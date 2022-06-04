@@ -31,3 +31,4 @@ class ImageUploadForm(forms.ModelForm):
     def form_valid(self, form):
         form.instance.user = self.request.profile
         return super().form_valid(form)
+       

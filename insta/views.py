@@ -73,9 +73,7 @@ def add_comment(request,post_id):
         comment = request.POST.get('comments')
         post = Image.objects.get(id=post_id)
         user_profile = User.objects.get(username=current_user.username)
-        Comments.objects.create(comment = comment, post = post,
-         user=user_profile   
-        )
+        Comments.objects.create(comment = comment, post = post, user = user_profile)
     return redirect('view_post', pk=post_id) 
 
 @login_required
