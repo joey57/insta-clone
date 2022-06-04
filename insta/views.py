@@ -4,26 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm,ImageUploadForm
 from django.contrib.auth.decorators import login_required
-from .models import Image, Profile, User, Comments
+from .models import Image, Profile, User, Comments, Follow
 
 # Create your views here.
-@login_required
-def home_page(request):
-    current_user = request.user
-    posts = Image.objects.all()
-    comments = Comments.objects.all()
-   
-    user = User.objects.get(username=current_user.username)
-    users = User.objects.exclude(username=current_user.username).exclude(is_superuser=True)
-  
-    ctx = {
-        'posts':posts,
-        'user':user,
-        'users':users,     
-        }
-
-    return render(request,'index.html',ctx)
-
 @login_required
 def upload_picture(request):
     current_user = request.user
@@ -56,6 +39,18 @@ def index(request):
     return render(request, 'index.html', {"images":images[::-1], "form": form, "users": users, })
 
 @login_required
+def search_results(request):
+    if 'search_profile' in request.GET and request.GET["search_profile"]:
+        search_term = request.GET.get("search_profile")
+        searched_profiles = Profile.search_profile(search_term)
+        print(searched_profiles)
+        message = f"{search_term}"
+        return render(request, 'search_results.html', {"message":message,"profiles": searched_profiles})
+    else:
+        message = "You haven't searched for any profile"
+    return render(request, 'search_results.html', {'message': message})
+
+@login_required
 def view_post(request,pk):
     post = Image.objects.get(id=pk)
     try:
@@ -81,7 +76,52 @@ def add_comment(request,post_id):
         Comments.objects.create(comment = comment, post = post,
          user=user_profile   
         )
-    return redirect('view_post', pk=post_id)    
+    return redirect('view_post', pk=post_id) 
+
+@login_required
+def follow(request,id):
+    if request.method == 'GET':
+        user_follow=User.objects.get(pk=id)
+        follow_user=Follow(follower=request.user, followed=user_follow)
+        follow_user.save()
+        return redirect('user_profile' ,username=user_follow.username)
+
+@login_required    
+def unfollow(request,id):
+    if request.method=='GET':
+        user_unfollow=User.objects.get(pk=id)
+        unfollow_user=Follow.objects.filter(follower=request.user,followed=user_unfollow)
+        unfollow_user.delete()
+        return redirect('user_profile' ,username=user_unfollow.username)    
+
+@login_required
+def user_profile(request, username):
+    current_user = request.user
+    user= User.objects.get(username = current_user.username)
+    user_select = User.objects.get(username=username)
+    if user_select == user:
+        return redirect('profile', username=request.user.username)
+    posts = Image.objects.filter(user = user_select.id)
+    profile = Profile.filter_profile_by_id(follower_is = user_select.id)
+    followers = Follow.objects.filter(followed=user_select.id)
+
+    follow_status = False
+    for follower in followers:
+        if user.id == follower.follower.id:
+            follow_status = True
+            break 
+        else:
+            follow_status = False
+
+    context ={
+        'posts': posts,
+        'profile':profile,
+        'user':user,
+        'user_select':user_select,
+        'followers':followers,
+        'follow_status':follow_status,
+    }           
+    return render(request, 'user_profile.html', context)
 
 def register(request):
     if request.method == 'POST':
