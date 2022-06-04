@@ -2,23 +2,24 @@
 <!-- html -->
 {% block content %}
 <!-- content -->
+<br><br><br>
 <div class="container">
   <div class="single_post-container row">
     <div class="col-md-6 image-container">
-      <img src="{{image.image.url}}" alt class="card-img-top"/>
+      <img src="{{post.image.url}}" alt class="card-img-top"/>
     </div>
     <div class="col-md-6 comments-container">
       <div class="user">
         <div class="image">
-          <img src="{{image.user.profile.image.url}}" alt="" />
+          <img src="{{post.user.profile.image.url}}" alt="" />
         </div>
-        <div class="user_name ml-1 mb-2">{{image.user.user.username}}</div>
+        <div class="user_name ml-1 mb-2">{{post.user.user.username}}</div>
       </div>
       <hr />
       <div class="post">
-        <span class="user_name"> {{image.user.user.username}} </span>
-        {{image.name}}
-        <p class="post_caption">{{image.caption}}</p>
+        <span class="user_name"> {{post.user.user.username}} </span>
+        {{post.name}}
+        <p class="post_caption">{{post.caption}}</p>
       </div>
       <div class="comments-wrapper">
         <h4 class="text-center">Comments</h4>
@@ -42,27 +43,27 @@
         {% endfor %}
       </div>
 
-      <div class="icons-container mt-2">
+      <div class="icons-container mt-2" style="display: flex">
         <div class="like mr-3">
           <a href="">
-            <img src="../../static/assests/liked.png" alt="" />
+            <img src="../../static/assests/liked.png" style="height: 50px;" alt="" />
           </a>
         </div>
         <div class="comment mr-3">
           <a href="#">
-            <img src="../../static/assests/message.jpg" alt="" />
+            <img src="../../static/assests/message.jpg" style="height: 50px; "alt="" />
           </a>
         </div>
         <div class="comment">
           <a href="">
-            <img src="../../static/assests/send.jpg" alt="" />
+            <img src="../../static/assests/send.jpg" alt=""style="height: 50px;" />
           </a>
         </div>
       </div>
       <h5>{{image.likes.count}} likes</h5>
       <span class="text-muted">{{image.created}}</span>
       <div class="comments-form mt-2">
-        <form action="{%url 'add_comment' post.id %}" method="POST">
+        <form action="{%url 'add_comment' post.id%}" method="POST">
           {%csrf_token%}
           <div class="input-group mb-3">
             <input type="text" class="form-control" name="comment" placeholder="Add comment" />
