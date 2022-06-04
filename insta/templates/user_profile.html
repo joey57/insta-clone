@@ -1,7 +1,9 @@
 {%extends 'base.html'%}
 <!-- html -->
 {% block content %}
+{% include 'navbar.html' %}
 <!-- content -->
+<br><br><br><br>
 <div class="container-fluid m-5">
   <div class="user_profile">
     <div class="image">
@@ -16,6 +18,7 @@
         <div>
           <a href="{%url 'unfollow' user_select.id %}" class="btn btn-primary">Following</a>
         </div>
+        <br>
         {%else%}
         <div>
           <a href="{%url 'follow' user_select.id %}" class="btn btn-outline-primary">Follow</a>
@@ -27,7 +30,8 @@
         <p class="">{{profile.bio}}</p>
       </div>
       <div class="third">
-        <div class="posts ml-3"><span>{{images.count}}</span> posts</div>
+        <div class="posts ml-3">
+          <span>{{posts.count}}</span> posts</div>
         <div class="followers ml-3">
           <span>{{user_select.followers.count}}</span> followers
         </div>
@@ -40,11 +44,11 @@
   <hr />
   <div class="user-posts">
     <div class="row">
-      {% for image in images %}
+      {% for post in posts %}
       <div class="col-md-4">
         <div class="post-wrapper">
           <a href="{%url 'view_post' post.id %}">
-            <img class="img-responsive" src="{{image.image.url}}" alt="..." />
+            <img class="img-responsive" src="{{post.image.url}}" alt="..." />
           </a>
         </div>
       </div>

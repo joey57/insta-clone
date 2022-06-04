@@ -100,7 +100,7 @@ def user_profile(request, username):
     if user_select == user:
         return redirect('profile', username=request.user.username)
     posts = Image.objects.filter(user = user_select.id)
-    profile = Profile.filter_profile_by_id(follower_is = user_select.id)
+    profile = Profile.filter_profile_by_id(user_select.id)
     followers = Follow.objects.filter(followed=user_select.id)
 
     follow_status = False
