@@ -50,7 +50,7 @@ body {
   display: flex;
 }
 .icons-container img {
-  height: 50px;
+  height: 40px;
 }
 .card .card-text {
   font-size: 20px;
@@ -66,8 +66,9 @@ body {
 }
 
 .followers-container {
-  padding: 20px;
-  position: fixed;
+  padding: 80px;
+  position: relative;
+
 }
 .followers-wrapper {
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
