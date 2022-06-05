@@ -8,6 +8,9 @@ li {
 
 .icons {
   display: flex;
+  height: 100px;
+  width: 100px;
+
 }
 
 .dropdown-toggle::after {
