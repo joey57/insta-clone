@@ -3,7 +3,8 @@
 ## Description
 Instaclone is a Django web application that emulates the basic functionalities of the Instagram application like posting a picture, liking and commenting on it, sharing the image, following and unfollowing a user account, and updating a user profile.
 
-## User Stories 
+## User Stories
+- Sign up to the application. 
 - sign in to the application to start using.
 - Upload my pictures to the application
 - see my profile and all the posts
