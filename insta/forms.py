@@ -31,4 +31,9 @@ class ImageUploadForm(forms.ModelForm):
     def form_valid(self, form):
         form.instance.user = self.request.profile
         return super().form_valid(form)
+
+class UpdateUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'image')
        
