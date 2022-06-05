@@ -12,6 +12,8 @@ urlpatterns=[
   path('user_profile/<username>/',views.user_profile, name='user_profile'),
   path('follow/<int:id>/',views.follow, name='follow'),
   path('unfollow/<int:id>/',views.unfollow, name='unfollow'),
+  path('update_profile/<int:id>',views.update_profile, name='update_profile'),
+  
 
 ]
 
