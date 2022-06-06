@@ -1,5 +1,5 @@
 {% load django_bootstrap5 %}
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
  <head>
@@ -17,7 +17,8 @@
 
 </head>
 <body>
-  <nav class="navbar m-0 bg-white">
+  {% load static %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 ">
     <a href="/" class="navbar-brand mb-0 h1">
       <img src="../../static/assests/instagram_logo.png" alt="" />
     </a>
@@ -25,10 +26,11 @@
       <input type="text" class="form-control" placeholder="Search" aria-label="Search" id="searching"
         name="search_profile" />
     </form>
+   <div class="collapse navbar-collapse" id="navbarNav"> 
    {% if user.is_authenticated %}
     <ul class="icons m-0">
       <li class="nav-item">
-        <a class="nav-link mr-0" href=" ">
+        <a class="nav-link mr-0" href="/">
           <img src="../../static/assests/home.png" alt="" class="nav-icon" height="20" />
         </a>
       </li>
@@ -60,7 +62,7 @@
         <a class="nav-link" href="{%url 'profile'  username=user%}">Profile<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{%url 'logout'%}">Logout</a>
+        <a class="nav-link" href="{%url 'logout' %}">Logout</a>
       </li>
      
     </ul>
@@ -68,9 +70,8 @@
     <li>
       <a class="btn btn-default" href="{% url 'login' %} ">Sign in</a>
     </li>
-    {% endif %}
-
-  
+    {% endif %} 
+  </div> 
   </nav>
   <hr class="m-0" />
  

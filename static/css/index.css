@@ -66,7 +66,8 @@ body {
 }
 
 .followers-container {
-  padding: 80px;
+  padding: 20px;
+  position: fixed;
 
 }
 .followers-wrapper {
