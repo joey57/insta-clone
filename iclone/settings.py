@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'insta',
     'django_bootstrap5',
     'crispy_forms',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -135,6 +139,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = 'login'
+
+# Cloudinary config
+cloudinary.config(
+  cloud_name = "inst-clone", 
+  api_key = "825596169442489", 
+  api_secret = "fkdCFmaWX2woloWEpVs5STDqLP4" 
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

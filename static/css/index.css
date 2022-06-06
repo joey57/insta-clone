@@ -231,3 +231,28 @@ body {
 .user_profile .details .third span {
   font-weight: 600;
 }
+
+@media screen and (max-width: 767px) {
+  .post-container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .post-container {
+    width: 90%;
+  }
+
+  .followers-container {
+    width: 90%;
+  }
+  .user-header {
+    width: 90%;
+  }
+  .users-wrapper {
+    width: 90%;
+  }
+  .single_post-container {
+    width: 90%;
+  }
+}
+
