@@ -12,6 +12,7 @@ insta-clone is a Django web application that emulates the basic functionalities 
 - comment on other users posts.
 
 ## Live site
+(https://igappclone.herokuapp.com/)
 
 ## Technologies used
 * Django Framework - used to create the application. 
