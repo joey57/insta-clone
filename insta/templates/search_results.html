@@ -12,7 +12,7 @@
     <div class="single-user-container mt-3">
       <a class="text-decoration-none user" href="{%url 'user_profile' username=profile.user.username %}">
         <div class="image">
-          <img src="{{profile.profile.image.url}}" alt="" />
+          <img src="{{profile.image.url}}" alt="" />
         </div>
         <div class="user_name mb-2">{{profile.user.username.capitalize}}</div>
       </a>

@@ -7,14 +7,13 @@
 <div class="container-fluid">
   <div class="row main-container">
     <div class="col-md-7 post-container mt-3">
-      <br>
-
+      <br><br><br>
       {% for image in images %}
       <br>
       <div class="card m-3">
         <div class="card-header p-1">
           <div class="image" href="{%url 'user_profile' username=user %}">
-            <img src="{{image.user.profile.image.url}}" alt="" />
+            <img src="{{image.user.image.url}}" alt="" />
           </div>
           <div class="user_name ml-1 mb-2" >{{image.user.user.username}}</div>
         </div>
@@ -68,12 +67,12 @@
 
       {% endfor %}
     </div>
-    <br>
+    <br><br><br>
     <div class="col-md-5 followers-container">
       <div class="followers-wrapper">
         <div class="user-header">
           <div class="image" href="{%url 'user_profile' username=user %}">
-            <img src="{{user.profile.profile.image.url}}" alt="" />
+            <img src="{{user.profile.image.url}}" alt="" />
           </div>
           <div class="user_name ml-1 mb-2">{{user.username}}</div>
         </div>
@@ -84,7 +83,7 @@
           <div class="single-user-container">
             <a class="text-decoration-none user" href="{%url 'user_profile' username=user %}">
               <div class="image">
-                <img src="{{user.profile.profile.image.url}}" alt="" />
+                <img src="{{user.profile.image.url}}" alt="" />
               </div>
               <div class="user_name mb-2">{{user.username}}</div>
             </a>
