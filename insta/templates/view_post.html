@@ -2,6 +2,7 @@
 <!-- html -->
 {% load django_bootstrap5 %}
 {% block content %}
+{% include 'navbar.html'%}
 <!-- content -->
 <br><br><br>
 <div class="container">
@@ -12,7 +13,7 @@
     <div class="col-md-6 comments-container">
       <div class="user">
         <div class="image">
-          <img src="{{post.user.profile.image.url}}" alt="" />
+          <img src="{{post.user.image.url}}" alt="" />
         </div>
         <div class="user_name ml-1 mb-2">{{post.user.user.username}}</div>
       </div>
@@ -29,7 +30,7 @@
           <div class="comment_user user_name mr-2">
             <div class="user">
               <div class="image">
-                <img src="{{comment.user.profile.profile.image.url}}" alt="" />
+                <img src="{{comment.user.profile.image.url}}" alt="" />
               </div>
               <div class="user_name ml-1 mb-2">{{comment.user.username}}</div>
             </div>

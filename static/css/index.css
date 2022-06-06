@@ -67,8 +67,6 @@ body {
 
 .followers-container {
   padding: 20px;
-  position: fixed;
-
 }
 .followers-wrapper {
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);

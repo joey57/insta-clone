@@ -21,9 +21,7 @@
         <a href="{%url 'view_post' image.id %}">
           <img src="{{image.image.url}}" class="card-img-top" alt="post" />
         </a>
-
         {%endif%}
-
         <div class="card-body">
           <div class="icons-container">
             <div class="like mr-3">
@@ -54,7 +52,7 @@
           </h5>
           <span class="text-muted">{{image.created}}</span>
         </div>
-        
+
         <div class="comments-form">
           <form action="{%url 'add_comment' image.id %}" method="POST">
             {%csrf_token%}
@@ -69,7 +67,7 @@
       {% endfor %}
     </div>
     <br><br><br>
-    <div class="col-md-5 followers-container">
+   <div class="col-md-5 followers-container mt-5">
       <div class="followers-wrapper">
         <div class="user-header">
           <div class="image" href="{%url 'user_profile' username=user %}">
