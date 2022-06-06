@@ -1,14 +1,15 @@
 # insta-clone
 
 ## Description
-Instaclone is a Django web application that emulates the basic functionalities of the Instagram application like posting a picture, liking and commenting on it, sharing the image, following and unfollowing a user account, and updating a user profile.
+insta-clone is a Django web application that emulates the basic functionalities of the Instagram application such as posting a picture, commenting on it, following and unfollowing a user account, and updating a user profile.
 
 ## User Stories
 - Sign up to the application. 
 - sign in to the application to start using.
 - Upload my pictures to the application
 - see my profile and all the posts
-- follow other users
+- follow other users.
+- comment on other users posts.
 
 ## Live site
 
@@ -44,7 +45,7 @@ Create .env file and add the following filling where appropriate:
     Open terminal on localhost:8000
 
 ## Known Bugs
-No known bugs so far.
+The user is unable to like a post.
 
 ## Contact Information
 If you have any questions feel free to contact me.
