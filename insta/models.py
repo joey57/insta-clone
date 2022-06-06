@@ -38,7 +38,7 @@ class Profile(models.Model):
     return cls.objects.filter(user__username__icontains=name).all()
 
 class Image(models.Model):
-  image =models.ImageField(upload_to = 'uploads/')
+  image = CloudinaryField('uploads/')
   name = models.CharField(max_length=250, blank=True)
   caption = models.CharField(max_length=250, blank=True)
   likes = models.ManyToManyField(User, related_name='likes', blank=True)
